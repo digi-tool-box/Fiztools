@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All in One PDF | PDF Tools Play - Create PDF Collages</title>
+    <meta name="description" content="Create PDF page collages online for free. Combine all PDF pages into a single image. 100% client-side processing. No watermarks, no registration.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-file-pdf"></i>
+                <h1>PDF Tools <span class="logo-play">Play</span></h1>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="image-to-pdf.html" class="nav-link">
+                    <i class="fas fa-image"></i> Image to PDF
+                </a>
+                <a href="pdf-merger.html" class="nav-link">
+                    <i class="fas fa-file-merge"></i> Merge PDFs
+                </a>
+                <a href="all-in-one.html" class="nav-link active">
+                    <i class="fas fa-layer-group"></i> All in One
+                </a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-info-circle"></i> More <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="about.html"><i class="fas fa-users"></i> About Us</a>
+                        <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                        <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
+                        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                        <a href="Coffee.html"><i class="fas fa-heart"></i> Coffee</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="header-right">
+    <div class="privacy-badge">
+        <i class="fas fa-shield-alt"></i>
+        <span>100% Local</span>
+    </div>
+    <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+    </button>
+</div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h2 class="hero-title">All in One Page PDF</h2>
+                <p class="hero-subtitle">Combine all PDF pages into a single image collage arranged in a grid or sequence. 100% client-side processing.</p>
+                <div class="privacy-notice">
+                    <i class="fas fa-lock"></i>
+                    <p><strong>Privacy Guarantee:</strong> All PDFs are processed locally in your browser. No files are uploaded to any server.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool Section -->
+        <div class="container tools-container">
+            <section id="all-in-one" class="tool-section active">
+                <div class="tool-header">
+                    <h2><i class="fas fa-layer-group"></i> All in One Page PDF</h2>
+                    <p>Combine all PDF pages into a single image collage arranged in a grid or sequence</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="upload-area" id="allinone-upload-area">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Drop PDF here or click to browse</h3>
+                        <p>Create a single image collage with all pages (Max: 50MB)</p>
+                        <input type="file" id="allinone-input" accept=".pdf">
+                        <label for="allinone-input" class="browse-btn">Browse PDF</label>
+                    </div>
+
+                    <div class="loading-container" id="allinone-loading" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Processing PDF... This may take a moment for larger files.</p>
+                    </div>
+
+                    <div class="progress-container" id="allinone-progress" style="display: none;">
+                        <div class="progress-bar" id="allinone-progress-bar"></div>
+                    </div>
+
+                    <div class="preview-section" id="allinone-preview" style="display: none;">
+                        <div class="pdf-info">
+                            <div>
+                                <h3 id="allinone-filename">Document.pdf</h3>
+                                <p id="allinone-pagecount">0 pages</p>
+                            </div>
+                            <div class="controls">
+                                <div class="scale-controls">
+                                    <span>Thumbnail Size:</span>
+                                    <input type="range" min="20" max="100" value="50" class="scale-slider" id="scaleSlider">
+                                    <span class="scale-value" id="scaleValue">50%</span>
+                                </div>
+                                <div class="layout-controls">
+                                    <button class="layout-btn active" id="gridLayoutBtn">Grid</button>
+                                    <button class="layout-btn" id="horizontalLayoutBtn">Horizontal</button>
+                                    <button class="layout-btn" id="verticalLayoutBtn">Vertical</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quality-controls">
+                            <span>Quality:</span>
+                            <input type="range" min="1" max="3" value="2" class="quality-slider" id="qualitySlider">
+                            <span class="quality-value" id="qualityValue">High</span>
+                        </div>
+                        <div class="canvas-container">
+                            <canvas id="combinedCanvas"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="action-section" id="allinone-actions" style="display: none;">
+                        <button class="btn-primary" id="downloadPngBtn">
+                            <i class="fas fa-download"></i> Download PNG
+                        </button>
+                        <button class="btn-primary" id="downloadPdfBtn">
+                            <i class="fas fa-file-pdf"></i> Download PDF
+                        </button>
+                        <button class="btn-secondary" id="resetAllInOneBtn">
+                            <i class="fas fa-redo"></i> Upload New PDF
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Uses for PDF Collages</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-th-large"></i>
+                        </div>
+                        <h3>Document Overview</h3>
+                        <p>Create visual overviews of multi-page documents for quick reference and review.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-presentation"></i>
+                        </div>
+                        <h3>Presentation Slides</h3>
+                        <p>Combine multiple slides into a single image for presentations and handouts.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sitemap"></i>
+                        </div>
+                        <h3>Storyboarding</h3>
+                        <p>Create storyboards by arranging document pages in sequence for planning.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-print"></i>
+                        </div>
+                        <h3>Print Optimization</h3>
+                        <p>Save paper and ink by printing multiple pages on a single sheet.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>PDF Tools Play</h3>
+                    <p>Professional PDF tools for everyone</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Tools</h4>
+                        <a href="image-to-pdf.html">Image to PDF</a>
+                        <a href="pdf-merger.html">Merge PDFs</a>
+                        <a href="all-in-one.html">All in One</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Contact Us</a>
+                        <a href="Coffee.html">Coffee</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms & Conditions</a>
+                    </div>
+                </div>
+                <div class="footer-info">
+                    <p><i class="fas fa-code"></i> Built with HTML, CSS & JavaScript</p>
+                    <p><i class="fas fa-heart"></i> 100% Client-Side Processing</p>
+                    <p class="copyright">© 2023 PDF Tools Play. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

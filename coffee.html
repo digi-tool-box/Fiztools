@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Me a Coffee | Support PDF Tools Play</title>
+    <meta name="description" content="Support PDF Tools Play development. Buy me a coffee to help maintain and improve our free PDF tools while keeping them privacy-focused and accessible to all.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-file-pdf"></i>
+                <h1>PDF Tools <span class="logo-play">Play</span></h1>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="image-to-pdf.html" class="nav-link">
+                    <i class="fas fa-image"></i> Image to PDF
+                </a>
+                <a href="pdf-merger.html" class="nav-link">
+                    <i class="fas fa-file-merge"></i> Merge PDFs
+                </a>
+                <a href="all-in-one.html" class="nav-link">
+                    <i class="fas fa-layer-group"></i> All in One
+                </a>
+                <div class="nav-dropdown active">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-info-circle"></i> More <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="about.html"><i class="fas fa-users"></i> About Us</a>
+                        <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                        <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
+                        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                        <a href="coffee.html" class="active"><i class="fas fa-coffee"></i> Coffee</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="header-right">
+                <div class="privacy-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>100% Local</span>
+                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="info-page">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Buy Me a Coffee</h1>
+                    <p>Enjoying our free PDF tools? Support us with a coffee to keep them running!</p>
+                </div>
+                
+                <div class="info-content">
+                    <div class="content-section">
+                        <div class="donation-hero">
+                            <i class="fas fa-coffee"></i>
+                            <h2>Why Buy Me a Coffee?</h2>
+                            <p>PDF Tools Play is completely free with no watermarks, ads, or registration required. Your coffee contribution helps:</p>
+                            
+                            <div class="impact-grid">
+                                <div class="impact-card">
+                                    <i class="fas fa-server"></i>
+                                    <h4>Server Costs</h4>
+                                    <p>Cover hosting and domain expenses</p>
+                                </div>
+                                <div class="impact-card">
+                                    <i class="fas fa-code"></i>
+                                    <h4>Development</h4>
+                                    <p>Create new features and fix bugs</p>
+                                </div>
+                                <div class="impact-card">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <h4>Maintenance</h4>
+                                    <p>Keep tools updated and secure</p>
+                                </div>
+                                <div class="impact-card">
+                                    <i class="fas fa-bolt"></i>
+                                    <h4>Performance</h4>
+                                    <p>Ensure fast and reliable service</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h2>Payment Options</h2>
+                        <p>Choose your preferred payment method. Every coffee makes a difference!</p>
+                        
+                        <div class="donation-options">
+                            <div class="donation-card">
+                                <i class="fas fa-qrcode"></i>
+                                <h3>QR Code Payment</h3>
+                                <p>Scan with any UPI/Banking app</p>
+                                <div class="upi-qr">
+                                    <!-- Placeholder for QR Code - Add your QR code image here -->
+                                    <div class="qr-placeholder">
+                                        <i class="fas fa-qrcode"></i>
+                                        <p>Add Your QR Code Here</p>
+                                        <p>Upload your payment QR code</p>
+                                    </div>
+                                </div>
+                                <p class="note">Scan to pay via UPI, GPay, Paytm, etc.</p>
+                            </div>
+                            
+                            <div class="donation-card">
+                                <i class="fas fa-credit-card"></i>
+                                <h3>Credit/Debit Cards</h3>
+                                <p>Secure payment for global supporters</p>
+                                <div class="stripe-button">
+                                    <button class="btn-primary" id="cardDonateBtn">
+                                        <i class="fas fa-lock"></i> Pay with Card
+                                    </button>
+                                </div>
+                                <p class="note">Visa, MasterCard, American Express</p>
+                            </div>
+                            
+                            <div class="donation-card">
+                                <i class="fab fa-paypal"></i>
+                                <h3>PayPal</h3>
+                                <p>Quick and secure PayPal payment</p>
+                                <div class="paypal-button">
+                                    <button class="btn-primary" id="paypalDonateBtn">
+                                        <i class="fab fa-paypal"></i> PayPal Me
+                                    </button>
+                                </div>
+                                <p class="note">Available worldwide</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h2>Coffee Sizes</h2>
+                        <p>Choose how strong you like your coffee support!</p>
+                        
+                        <div class="donation-amounts">
+                            <div class="amount-tier">
+                                <h3><i class="fas fa-coffee"></i> Espresso</h3>
+                                <p class="price">$3</p>
+                                <p>A quick espresso shot of support</p>
+                                <button class="amount-btn" data-amount="3">
+                                    Buy Espresso
+                                </button>
+                            </div>
+                            
+                            <div class="amount-tier">
+                                <h3><i class="fas fa-mug-hot"></i> Regular Coffee</h3>
+                                <p class="price">$5</p>
+                                <p>A nice warm cup of support</p>
+                                <button class="amount-btn" data-amount="5">
+                                    Buy Coffee
+                                </button>
+                            </div>
+                            
+                            <div class="amount-tier">
+                                <h3><i class="fas fa-beer"></i> Large Brew</h3>
+                                <p class="price">$10</p>
+                                <p>A large brew for serious support</p>
+                                <button class="amount-btn active" data-amount="10">
+                                    Buy Large Brew
+                                </button>
+                            </div>
+                            
+                            <div class="amount-tier">
+                                <h3><i class="fas fa-crown"></i> Coffee Sponsor</h3>
+                                <p class="price">$25</p>
+                                <p>Sponsor a whole coffee machine!</p>
+                                <button class="amount-btn" data-amount="25">
+                                    Become Sponsor
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="custom-amount">
+                            <h3><i class="fas fa-edit"></i> Custom Coffee</h3>
+                            <p>Want to buy a different size coffee?</p>
+                            <div class="custom-input">
+                                <span>$</span>
+                                <input type="number" id="customAmount" min="1" placeholder="Enter custom amount">
+                                <button class="btn-secondary" id="customDonateBtn">
+                                    Buy Custom Coffee
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h2>Other Ways to Support</h2>
+                        <p>Not able to buy a coffee right now? You can still help:</p>
+                        
+                        <div class="support-methods">
+                            <div class="support-method">
+                                <i class="fas fa-share-alt"></i>
+                                <h4>Share with Friends</h4>
+                                <p>Tell others about PDF Tools Play. More users = more impact!</p>
+                                <div class="share-buttons">
+                                    <button class="share-btn">
+                                        <i class="fab fa-twitter"></i> Twitter
+                                    </button>
+                                    <button class="share-btn">
+                                        <i class="fab fa-facebook"></i> Facebook
+                                    </button>
+                                    <button class="share-btn">
+                                        <i class="fab fa-linkedin"></i> LinkedIn
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="support-method">
+                                <i class="fas fa-star"></i>
+                                <h4>Rate & Review</h4>
+                                <p>If you found our tools useful, consider rating or reviewing us online.</p>
+                                <button class="btn-secondary">
+                                    <i class="fas fa-star"></i> Leave Review
+                                </button>
+                            </div>
+                            
+                            <div class="support-method">
+                                <i class="fas fa-envelope"></i>
+                                <h4>Feedback</h4>
+                                <p>Help us improve by suggesting features or reporting issues.</p>
+                                <a href="contact.html" class="btn-secondary">
+                                    <i class="fas fa-comment"></i> Give Feedback
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-section">
+                        <div class="thank-you-message">
+                            <i class="fas fa-heart"></i>
+                            <h2>Thank You for Your Support!</h2>
+                            <p>Every coffee helps keep PDF Tools Play free, private, and accessible to everyone.</p>
+                            <p>Whether you buy a coffee, share our tools, or simply use them, you're supporting a vision of free, privacy-respecting software for all.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="content-section">
+                        <div class="donation-disclaimer">
+                            <h3><i class="fas fa-info-circle"></i> Quick Notes</h3>
+                            <ul>
+                                <li>All payments are one-time and voluntary</li>
+                                <li>You'll get the same great tools whether you buy coffee or not</li>
+                                <li>We don't store payment information</li>
+                                <li>For issues with payments, contact your payment provider</li>
+                                <li>Thank you for being awesome!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>PDF Tools Play</h3>
+                    <p>Free Online PDF Tools</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Tools</h4>
+                        <a href="image-to-pdf.html">Image to PDF</a>
+                        <a href="pdf-merger.html">Merge PDFs</a>
+                        <a href="all-in-one.html">All in One</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Contact Us</a>
+                        <a href="coffee.html">Coffee</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms & Conditions</a>
+                    </div>
+                </div>
+                <div class="footer-info">
+                    <p><i class="fas fa-code"></i> Built with HTML, CSS & JavaScript</p>
+                    <p><i class="fas fa-heart"></i> 100% Client-Side Processing</p>
+                    <p class="copyright">© 2023 PDF Tools Play. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Coffee page functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Amount button selection
+            const amountBtns = document.querySelectorAll('.amount-btn');
+            amountBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    amountBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const amount = this.getAttribute('data-amount');
+                    document.getElementById('customAmount').value = amount;
+                });
+            });
+            
+            // Custom amount button
+            document.getElementById('customDonateBtn')?.addEventListener('click', function() {
+                const amount = document.getElementById('customAmount').value;
+                if (amount && amount >= 1) {
+                    processCoffee(amount);
+                } else {
+                    alert('Please enter a valid amount (minimum $1)');
+                }
+            });
+            
+            // Payment button handlers
+            document.getElementById('cardDonateBtn')?.addEventListener('click', function() {
+                alert('Card payment would be processed here. For demo, please use QR code or contact for payment details.');
+            });
+            
+            document.getElementById('paypalDonateBtn')?.addEventListener('click', function() {
+                alert('PayPal payment would open here. For demo, please use QR code or contact for PayPal link.');
+            });
+            
+            // Share buttons
+            document.querySelectorAll('.share-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const platform = this.querySelector('i').className.includes('twitter') ? 'Twitter' :
+                                   this.querySelector('i').className.includes('facebook') ? 'Facebook' : 'LinkedIn';
+                    alert(`In a real implementation, this would share on ${platform}. For now, please share manually: https://pdftoolsplay.com`);
+                });
+            });
+            
+            // Review button
+            document.querySelector('.btn-secondary .fa-star')?.closest('button')?.addEventListener('click', function() {
+                alert('In real implementation, this would link to review platforms. Thank you for considering!');
+            });
+        });
+        
+        function processCoffee(amount) {
+            alert(`Thank you for buying a $${amount} coffee! ☕\n\nIn a real implementation, this would process the payment.\n\nFor now:\n1. Add your payment QR code to the page\n2. Or contact for payment details\n\nYour support means a lot!`);
+        }
+    </script>
+</body>
+</html>
