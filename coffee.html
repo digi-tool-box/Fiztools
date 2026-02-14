@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buy Me a Coffee | Support PDF Tools Play</title>
-    <meta name="description" content="Support PDF Tools Play development. Buy me a coffee to help maintain and improve our free PDF tools while keeping them privacy-focused and accessible to all.">
+    <title>Buy Me a Coffee | Support FizTools</title>
+    <meta name="description" content="Support FizTools development. Buy me a coffee to help maintain and improve our free PDF tools while keeping them privacy-focused and accessible to all.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,23 +14,15 @@
 <body>
     <header class="header">
         <div class="container">
-            <div class="logo">
-                <i class="fas fa-file-pdf"></i>
-                <h1>PDF Tools <span class="logo-play">Play</span></h1>
-            </div>
+            <a href="index.html" class="logo" style="text-decoration: none; cursor: pointer;">
+    <i class="fas fa-bolt"></i>
+    <h1>Fiz <span class="logo-play">Tools</span></h1>
+</a>
             <nav class="nav">
-                <a href="index.html" class="nav-link">
-                    <i class="fas fa-home"></i> Home
-                </a>
-                <a href="image-to-pdf.html" class="nav-link">
-                    <i class="fas fa-image"></i> Image to PDF
-                </a>
-                <a href="pdf-merger.html" class="nav-link">
-                    <i class="fas fa-file-merge"></i> Merge PDFs
-                </a>
-                <a href="all-in-one.html" class="nav-link">
-                    <i class="fas fa-layer-group"></i> All in One
-                </a>
+                <a href="image-to-pdf.html" class="nav-link">Image to PDF</a>
+<a href="pdf-merger.html" class="nav-link">Merge PDFs</a>
+<a href="compress-pdf.html" class="nav-link">Compress PDF</a>
+<a href="all-in-one.html" class="nav-link">All in One</a>
                 <div class="nav-dropdown active">
                     <a href="#" class="nav-link">
                         <i class="fas fa-info-circle"></i> More <i class="fas fa-chevron-down"></i>
@@ -69,7 +61,7 @@
                         <div class="donation-hero">
                             <i class="fas fa-coffee"></i>
                             <h2>Why Buy Me a Coffee?</h2>
-                            <p>PDF Tools Play is completely free with no watermarks, ads, or registration required. Your coffee contribution helps:</p>
+                            <p>FizTools is completely free with no watermarks, ads, or registration required. Your coffee contribution helps:</p>
                             
                             <div class="impact-grid">
                                 <div class="impact-card">
@@ -117,27 +109,33 @@
                             </div>
                             
                             <div class="donation-card">
-                                <i class="fas fa-credit-card"></i>
-                                <h3>Credit/Debit Cards</h3>
-                                <p>Secure payment for global supporters</p>
-                                <div class="stripe-button">
-                                    <button class="btn-primary" id="cardDonateBtn">
-                                        <i class="fas fa-lock"></i> Pay with Card
-                                    </button>
-                                </div>
-                                <p class="note">Visa, MasterCard, American Express</p>
-                            </div>
+    <i class="fas fa-mug-hot"></i>
+    <h3>Buy Me a Coffee</h3>
+    <p>Secure payment via BuyMeACoffee</p>
+
+    <a href="https://buymeacoffee.com/fiztools"
+       target="_blank"
+       class="btn-primary">
+        <i class="fas fa-coffee"></i> Support on BuyMeACoffee
+    </a>
+
+    <p class="note">Supports cards, PayPal & international payments</p>
+</div>
                             
                             <div class="donation-card">
                                 <i class="fab fa-paypal"></i>
                                 <h3>PayPal</h3>
+                                <p>Direct PayPal contribution</p>
                                 <p>Quick and secure PayPal payment</p>
-                                <div class="paypal-button">
-                                    <button class="btn-primary" id="paypalDonateBtn">
-                                        <i class="fab fa-paypal"></i> PayPal Me
-                                    </button>
-                                </div>
-                                <p class="note">Available worldwide</p>
+
+                                <a href="https://paypal.me/firoz897"
+       target="_blank"
+       class="btn-primary">
+        <i class="fab fa-paypal"></i> Pay via PayPal
+    </a>
+
+    <p class="note">Available worldwide</p>
+</div>
                             </div>
                         </div>
                     </div>
@@ -151,36 +149,48 @@
                                 <h3><i class="fas fa-coffee"></i> Espresso</h3>
                                 <p class="price">$3</p>
                                 <p>A quick espresso shot of support</p>
-                                <button class="amount-btn" data-amount="3">
-                                    Buy Espresso
-                                </button>
+                                <a href="https://buymeacoffee.com/fiztools" 
+   target="_blank" 
+   class="amount-btn">
+    Buy Coffee
+</a>
+
                             </div>
                             
                             <div class="amount-tier">
                                 <h3><i class="fas fa-mug-hot"></i> Regular Coffee</h3>
                                 <p class="price">$5</p>
                                 <p>A nice warm cup of support</p>
-                                <button class="amount-btn" data-amount="5">
-                                    Buy Coffee
-                                </button>
+                                <a href="https://buymeacoffee.com/fiztools" 
+   target="_blank" 
+   class="amount-btn">
+    Buy Coffee
+</a>
+
                             </div>
                             
                             <div class="amount-tier">
                                 <h3><i class="fas fa-beer"></i> Large Brew</h3>
                                 <p class="price">$10</p>
                                 <p>A large brew for serious support</p>
-                                <button class="amount-btn active" data-amount="10">
-                                    Buy Large Brew
-                                </button>
+                               <a href="https://buymeacoffee.com/fiztools" 
+   target="_blank" 
+   class="amount-btn">
+    Buy Coffee
+</a>
+
                             </div>
                             
                             <div class="amount-tier">
                                 <h3><i class="fas fa-crown"></i> Coffee Sponsor</h3>
                                 <p class="price">$25</p>
                                 <p>Sponsor a whole coffee machine!</p>
-                                <button class="amount-btn" data-amount="25">
-                                    Become Sponsor
-                                </button>
+                                <a href="https://buymeacoffee.com/fiztools" 
+   target="_blank" 
+   class="amount-btn">
+    Buy Coffee
+</a>
+
                             </div>
                         </div>
                         
@@ -191,8 +201,13 @@
                                 <span>$</span>
                                 <input type="number" id="customAmount" min="1" placeholder="Enter custom amount">
                                 <button class="btn-secondary" id="customDonateBtn">
-                                    Buy Custom Coffee
-                                </button>
+                                    
+                               <a href="https://buymeacoffee.com/fiztools" 
+   target="_blank" 
+   class="amount-btn">
+    Buy Custom Coffee
+</a>
+
                             </div>
                         </div>
                     </div>
@@ -205,7 +220,7 @@
                             <div class="support-method">
                                 <i class="fas fa-share-alt"></i>
                                 <h4>Share with Friends</h4>
-                                <p>Tell others about PDF Tools Play. More users = more impact!</p>
+                                <p>Tell others about FizTools. More users = more impact!</p>
                                 <div class="share-buttons">
                                     <button class="share-btn">
                                         <i class="fab fa-twitter"></i> Twitter
@@ -223,9 +238,12 @@
                                 <i class="fas fa-star"></i>
                                 <h4>Rate & Review</h4>
                                 <p>If you found our tools useful, consider rating or reviewing us online.</p>
-                                <button class="btn-secondary">
-                                    <i class="fas fa-star"></i> Leave Review
-                                </button>
+                                <a href="https://buymeacoffee.com/fiztools" 
+   target="_blank" 
+   class="amount-btn">
+    Buy Coffee
+</a>
+
                             </div>
                             
                             <div class="support-method">
@@ -243,7 +261,7 @@
                         <div class="thank-you-message">
                             <i class="fas fa-heart"></i>
                             <h2>Thank You for Your Support!</h2>
-                            <p>Every coffee helps keep PDF Tools Play free, private, and accessible to everyone.</p>
+                            <p>Every coffee helps keep FizTools free, private, and accessible to everyone.</p>
                             <p>Whether you buy a coffee, share our tools, or simply use them, you're supporting a vision of free, privacy-respecting software for all.</p>
                         </div>
                     </div>
@@ -270,7 +288,7 @@
             <div class="footer-content">
                 <div class="footer-logo">
                     <i class="fas fa-file-pdf"></i>
-                    <h3>PDF Tools Play</h3>
+                    <h3>Fiz Tools</h3>
                     <p>Free Online PDF Tools</p>
                 </div>
                 <div class="footer-links">
@@ -295,7 +313,7 @@
                 <div class="footer-info">
                     <p><i class="fas fa-code"></i> Built with HTML, CSS & JavaScript</p>
                     <p><i class="fas fa-heart"></i> 100% Client-Side Processing</p>
-                    <p class="copyright">© 2023 PDF Tools Play. All rights reserved.</p>
+                    <p class="copyright">© 2023 FizTools. All rights reserved.</p>
                 </div>
             </div>
         </div>
