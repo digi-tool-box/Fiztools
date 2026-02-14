@@ -1144,3 +1144,170 @@ function downloadFile(file, filename) {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 }
+document.addEventListener('DOMContentLoaded', function() {
+    // Set active navigation based on current page
+    const currentPage = window.location.pathname.split('/').pop();
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+});
+function initCompressTool() {
+
+    const input = document.getElementById("pdfInput");
+    const uploadArea = document.getElementById("uploadArea");
+    const compressBtn = document.getElementById("compressBtn");
+    const compressionLevel = document.getElementById("compressionLevel");
+
+    const uploadTitle = document.getElementById("uploadTitle");
+    const uploadSubtitle = document.getElementById("uploadSubtitle");
+    const fileInfo = document.getElementById("fileInfo");
+    const fileNameEl = document.getElementById("fileName");
+    const fileSizeEl = document.getElementById("fileSize");
+    const changeFileBtn = document.getElementById("changeFileBtn");
+
+    const progressArea = document.getElementById("progressArea");
+    const progressFill = document.getElementById("progressFill");
+    const progressText = document.getElementById("progressText");
+
+    const resultArea = document.getElementById("resultArea");
+    const originalSizeEl = document.getElementById("originalSize");
+    const compressedSizeEl = document.getElementById("compressedSize");
+    const reductionPercentEl = document.getElementById("reductionPercent");
+    const downloadBtn = document.getElementById("downloadBtn");
+
+    let selectedFile = null;
+
+    function showFile(file) {
+        uploadTitle.innerText = "File Ready";
+        uploadSubtitle.innerText = "Click compress to continue";
+        fileNameEl.innerText = file.name;
+        fileSizeEl.innerText = " (" + formatSize(file.size) + ")";
+        fileInfo.style.display = "block";
+        changeFileBtn.style.display = "inline-block";
+        uploadArea.classList.add("file-selected");
+    }
+
+    function resetUpload() {
+        selectedFile = null;
+        input.value = "";
+        compressBtn.disabled = true;
+        fileInfo.style.display = "none";
+        changeFileBtn.style.display = "none";
+        uploadTitle.innerText = "Drag & Drop PDF Here";
+        uploadSubtitle.innerText = "or click to select file";
+        uploadArea.classList.remove("file-selected");
+        resultArea.style.display = "none";
+    }
+
+    uploadArea.addEventListener("click", () => {
+        if (!selectedFile) input.click();
+    });
+
+    changeFileBtn.addEventListener("click", () => {
+        resetUpload();
+        input.click();
+    });
+
+    uploadArea.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        uploadArea.classList.add("dragover");
+    });
+
+    uploadArea.addEventListener("dragleave", () => {
+        uploadArea.classList.remove("dragover");
+    });
+
+    uploadArea.addEventListener("drop", (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove("dragover");
+        const file = e.dataTransfer.files[0];
+        if (file && file.type === "application/pdf") {
+            selectedFile = file;
+            compressBtn.disabled = false;
+            showFile(file);
+        }
+    });
+
+    input.addEventListener("change", () => {
+        if (input.files.length > 0) {
+            selectedFile = input.files[0];
+            compressBtn.disabled = false;
+            showFile(selectedFile);
+        }
+    });
+
+    compressBtn.addEventListener("click", async () => {
+        if (!selectedFile) return;
+
+        resultArea.style.display = "none";
+        progressArea.style.display = "block";
+        progressFill.style.width = "0%";
+
+        const quality = parseFloat(compressionLevel.value);
+
+        const arrayBuffer = await selectedFile.arrayBuffer();
+        const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+
+        const { PDFDocument } = PDFLib;
+        const newPdf = await PDFDocument.create();
+
+        for (let i = 1; i <= pdf.numPages; i++) {
+            progressText.innerText = `Processing page ${i} of ${pdf.numPages}`;
+            progressFill.style.width = ((i / pdf.numPages) * 100) + "%";
+
+            const page = await pdf.getPage(i);
+            const viewport = page.getViewport({ scale: 1.5 });
+
+            const canvas = document.createElement("canvas");
+            const context = canvas.getContext("2d");
+
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+
+            await page.render({
+                canvasContext: context,
+                viewport: viewport
+            }).promise;
+
+            const imgData = canvas.toDataURL("image/jpeg", quality);
+            const jpgImage = await newPdf.embedJpg(imgData);
+
+            const newPage = newPdf.addPage([jpgImage.width, jpgImage.height]);
+            newPage.drawImage(jpgImage, {
+                x: 0,
+                y: 0,
+                width: jpgImage.width,
+                height: jpgImage.height
+            });
+        }
+
+        const compressedPdfBytes = await newPdf.save({ useObjectStreams: true });
+        const blob = new Blob([compressedPdfBytes], { type: "application/pdf" });
+
+        originalSizeEl.innerText = formatSize(selectedFile.size);
+        compressedSizeEl.innerText = formatSize(blob.size);
+
+        const reduction = ((selectedFile.size - blob.size) / selectedFile.size) * 100;
+        reductionPercentEl.innerText = reduction.toFixed(2) + "%";
+
+        downloadBtn.href = URL.createObjectURL(blob);
+        downloadBtn.download = "compressed.pdf";
+
+        progressArea.style.display = "none";
+        resultArea.style.display = "block";
+    });
+}
+
+
+function formatSize(bytes) {
+    if (bytes < 1024) return bytes + " B";
+    else if (bytes < 1048576) return (bytes / 1024).toFixed(2) + " KB";
+    else return (bytes / 1048576).toFixed(2) + " MB";
+}
