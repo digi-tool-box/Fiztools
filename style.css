@@ -100,9 +100,9 @@ body {
 
 .nav {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
     flex: 1;
-    max-width: 500px;
     justify-content: center;
 }
 
@@ -2366,4 +2366,31 @@ body {
 .upload-area.file-selected {
     border-color: #28a745;
     background: rgba(40,167,69,0.05);
+}
+
+/* New Badge for Nav Links */
+.nav-link.has-badge {
+    position: relative;
+    overflow: visible;
+}
+
+.new-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(247, 37, 133, 0.4);
+    animation: pulse 2s infinite;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
