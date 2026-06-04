@@ -114,6 +114,10 @@ footer p{color:var(--muted);font-size:.82rem;font-weight:600;}
 footer a{color:var(--orange);text-decoration:none;}
 .fu{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
 .fu.vis{opacity:1;transform:translateY(0);}
+@media(min-width:769px){
+  .pgrid > .qbox { order: 2; }
+  .pgrid > div:last-child { order: 1; }
+}
 @media(max-width:768px){
   .hero{grid-template-columns:1fr;gap:34px;padding:48px 5%;}
   .hero-text{order:2;}.bwrap{order:1;}
@@ -212,7 +216,21 @@ footer a{color:var(--orange);text-decoration:none;}
   <div class="ssub">3 simple steps — 2 minute mein complete:</div>
 
   <div class="pgrid fu" id="payGrid">
-    <!-- LEFT -->
+    <!-- QR — kept first so it appears on top on mobile -->
+    <div class="qbox">
+      <h3 style="margin-bottom:5px;font-weight:900;">📲 Scan Karo — ₹99 pay karo!</h3>
+      <p style="color:var(--muted);font-size:.81rem;font-weight:600;margin-bottom:14px;">Amount already set hoga — sirf confirm dabao</p>
+      <div class="qwrap"><img id="qrImg" src="" alt="UPI QR Code ₹99"></div>
+      <div class="atag">₹99 — Pre-filled ✓</div>
+      <p style="color:var(--muted);font-size:.81rem;margin-top:7px;">PhonePe · GPay · Paytm · Any UPI ✓</p>
+      <p style="color:var(--green);font-size:.85rem;font-weight:700;margin-top:5px;">✅ Note: Payment name "Arshi" dikhega (Verified)</p>
+      <div style="margin-top:13px;padding:11px;background:var(--black);border-radius:8px;border:1px solid var(--border);">
+        <p style="font-size:.79rem;color:var(--muted);font-weight:700;">🔒 Secure UPI · <span style="color:var(--green)">₹99 ek baar</span> · No hidden charges</p>
+      </div>
+      <p style="color:var(--muted);font-size:.82rem;font-weight:600;margin-top:12px;line-height:1.6;">💡 Pehle UPI se ₹99 pay karo, fir neeche apni details daalkar form submit karo — aapki ebook email pe bhej di jayegi!</p>
+    </div>
+
+    <!-- LEFT: Steps + Form -->
     <div>
       <div class="steps">
         <div class="step">
@@ -261,19 +279,6 @@ footer a{color:var(--orange);text-decoration:none;}
         <div class="errmsg" id="submitErr" style="text-align:center;font-size:.9rem;">
           ⚠ Submission mein problem aayi. Dobara try karo.
         </div>
-      </div>
-    </div>
-
-    <!-- RIGHT: QR -->
-    <div class="qbox">
-      <h3 style="margin-bottom:5px;font-weight:900;">📲 Scan Karo — ₹99 pay karo!</h3>
-      <p style="color:var(--muted);font-size:.81rem;font-weight:600;margin-bottom:14px;">Amount already set hoga — sirf confirm dabao</p>
-      <div class="qwrap"><img id="qrImg" src="" alt="UPI QR Code ₹99"></div>
-      <div class="atag">₹99 — Pre-filled ✓</div>
-      <p style="color:var(--muted);font-size:.81rem;margin-top:7px;">PhonePe · GPay · Paytm · Any UPI ✓</p>
-      <p style="color:var(--green);font-size:.85rem;font-weight:700;margin-top:5px;">✅ Note: Payment name "Arshi" dikhega (Verified)</p>
-      <div style="margin-top:13px;padding:11px;background:var(--black);border-radius:8px;border:1px solid var(--border);">
-        <p style="font-size:.79rem;color:var(--muted);font-weight:700;">🔒 Secure UPI · <span style="color:var(--green)">₹99 ek baar</span> · No hidden charges</p>
       </div>
     </div>
   </div>
