@@ -114,6 +114,24 @@ footer p{color:var(--muted);font-size:.82rem;font-weight:600;}
 footer a{color:var(--orange);text-decoration:none;}
 .fu{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
 .fu.vis{opacity:1;transform:translateY(0);}
+
+/* UPI BUTTON */
+.upi-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;padding:22px 16px;background:linear-gradient(135deg,#FF6B00,#FF8C00);border:none;border-radius:14px;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 0 30px rgba(255,107,0,.35);font-family:'Nunito',sans-serif;gap:4px;}
+.upi-btn:hover{transform:translateY(-3px);box-shadow:0 0 50px rgba(255,107,0,.55);}
+.upi-btn-icon{font-size:2rem;}
+.upi-btn-text{font-size:1.15rem;font-weight:900;color:var(--black);}
+.upi-btn-sub{font-size:.76rem;color:rgba(0,0,0,.65);font-weight:700;}
+
+/* QR MODAL */
+.qr-modal{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.qr-modal.show{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:30px 20px;}
+.qr-modal-content{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px 24px;max-width:340px;width:100%;text-align:center;position:relative;animation:modalIn .3s ease;margin:auto;}
+@keyframes modalIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+.qr-modal-close{position:absolute;top:10px;right:14px;background:none;border:none;color:var(--muted);font-size:1.3rem;cursor:pointer;padding:4px;line-height:1;z-index:1;}
+.qr-modal-close:hover{color:var(--white);}
+.qr-modal h3{margin-bottom:4px;font-weight:900;font-size:.95rem;}
+.qr-modal p{color:var(--muted);font-size:.82rem;font-weight:600;margin-bottom:5px;}
+
 @media(min-width:769px){
   .pgrid > .qbox { order: 2; }
   .pgrid > div:last-child { order: 1; }
@@ -216,18 +234,31 @@ footer a{color:var(--orange);text-decoration:none;}
   <div class="ssub">3 simple steps — 2 minute mein complete:</div>
 
   <div class="pgrid fu" id="payGrid">
-    <!-- QR — kept first so it appears on top on mobile -->
-    <div class="qbox">
-      <h3 style="margin-bottom:5px;font-weight:900;">📲 Scan Karo — ₹99 pay karo!</h3>
-      <p style="color:var(--muted);font-size:.81rem;font-weight:600;margin-bottom:14px;">Amount already set hoga — sirf confirm dabao</p>
-      <div class="qwrap"><img id="qrImg" src="" alt="UPI QR Code ₹99"></div>
-      <div class="atag">₹99 — Pre-filled ✓</div>
-      <p style="color:var(--muted);font-size:.81rem;margin-top:7px;">PhonePe · GPay · Paytm · Any UPI ✓</p>
-      <p style="color:var(--green);font-size:.85rem;font-weight:700;margin-top:5px;">✅ Note: Payment name "Arshi" dikhega (Verified)</p>
-      <div style="margin-top:13px;padding:11px;background:var(--black);border-radius:8px;border:1px solid var(--border);">
-        <p style="font-size:.79rem;color:var(--muted);font-weight:700;">🔒 Secure UPI · <span style="color:var(--green)">₹99 ek baar</span> · No hidden charges</p>
+    <!-- QR — replaced with Pay via UPI button + desktop modal -->
+    <div class="qbox" id="qbox">
+      <h3 style="margin-bottom:8px;font-weight:900;">📱 Ready to Pay ₹99?</h3>
+      <p style="color:var(--muted);font-size:.84rem;font-weight:600;margin-bottom:18px;">Click the button below to pay via UPI</p>
+      <button id="upiPayBtn" class="upi-btn" onclick="handleUPIPayment()">
+        <span class="upi-btn-icon">💳</span>
+        <span class="upi-btn-text">Pay ₹99 via UPI</span>
+        <span class="upi-btn-sub">GPay · PhonePe · Paytm · Any UPI</span>
+      </button>
+      <p style="color:var(--muted);font-size:.79rem;margin-top:14px;">🔒 Secure UPI · ₹99 ek baar · No hidden charges</p>
+      <p style="color:var(--green);font-size:.84rem;font-weight:700;margin-top:4px;">✅ Payee: Arshi (Verified)</p>
+    </div>
+
+    <!-- DESKTOP QR MODAL (centers in viewport, scrolls if needed) -->
+    <div id="qrModal" class="qr-modal" onclick="if(event.target===this)closeQRModal()">
+      <div class="qr-modal-content">
+        <button class="qr-modal-close" onclick="closeQRModal()">✕</button>
+        <h3>📲 Scan with PhonePe / GPay / Paytm</h3>
+        <p style="margin-bottom:10px;">Scan this QR with your UPI app to pay ₹99</p>
+        <div class="qwrap" style="margin:0 auto 10px;"><img id="qrModalImg" src="" alt="UPI QR Code ₹99"></div>
+        <div class="atag">₹99 — Pre-filled ✓</div>
+        <p style="color:var(--muted);font-size:.82rem;margin-top:8px;">Amount already set — sirf confirm karo</p>
+        <p style="color:var(--muted);font-size:.77rem;margin-top:6px;word-break:break-all;">Or send to: <strong style="color:var(--orange);">Q258465755@ybl</strong></p>
+        <p style="color:var(--muted);font-size:.83rem;font-weight:700;margin-top:6px;">✅ Payee: Arshi (Verified)</p>
       </div>
-      <p style="color:var(--muted);font-size:.82rem;font-weight:600;margin-top:12px;line-height:1.6;">💡 Pehle UPI se ₹99 pay karo, fir neeche apni details daalkar form submit karo — aapki ebook email pe bhej di jayegi!</p>
     </div>
 
     <!-- LEFT: Steps + Form -->
@@ -236,8 +267,8 @@ footer a{color:var(--orange);text-decoration:none;}
         <div class="step">
           <div class="snum">1</div>
           <div class="sbody">
-            <strong>QR Scan Karo — ₹99 Automatic Set Hoga</strong>
-            <span>Right side ka QR scan karo. Amount pehle se ₹99 filled hoga. Ya UPI ID pe directly bhejo:</span>
+            <strong>"Pay via UPI" Button Dabao — ₹99 Automatic Set Hoga</strong>
+            <span>Upar diye gaye button pe click karo. Mobile pe UPI app khul jayega, desktop pe QR scan karo. Ya UPI ID pe directly bhejo:</span>
             <div class="upi-tag" id="upiDisplay">📲 Q258465755@ybl</div>
           </div>
         </div>
@@ -344,9 +375,32 @@ document.getElementById('contactEmail').textContent = YOUR_EMAIL;
 document.getElementById('footerEmail').href = "mailto:" + YOUR_EMAIL;
 document.getElementById('footerEmail').textContent = YOUR_EMAIL;
 
-// ── QR with ₹99 pre-filled ──
-var upiStr = "upi://pay?pa=" + UPI_ID + "&pn=" + encodeURIComponent(UPI_NAME) + "&am=99&cu=INR&tn=FizDigitals+Ebook";
-document.getElementById('qrImg').src = "https://api.qrserver.com/v1/create-qr-code/?data=" + encodeURIComponent(upiStr) + "&size=210x210&margin=4";
+// ── QR helper ──
+function buildUPIString(){
+  return "upi://pay?pa=" + UPI_ID + "&pn=" + encodeURIComponent(UPI_NAME) + "&am=99&cu=INR&tn=FizDigitals+Ebook";
+}
+
+// ── UPI Payment Handler ──
+function handleUPIPayment(){
+  var isMobile = /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  var upiLink = buildUPIString();
+  if(isMobile){
+    window.location.href = upiLink;
+  } else {
+    showQRModal();
+  }
+}
+
+function showQRModal(){
+  var m = document.getElementById('qrModal');
+  document.getElementById('qrModalImg').src = "https://api.qrserver.com/v1/create-qr-code/?data=" + encodeURIComponent(buildUPIString()) + "&size=210x210&margin=4";
+  m.scrollTop = 0;
+  m.classList.add('show');
+}
+
+function closeQRModal(){
+  document.getElementById('qrModal').classList.remove('show');
+}
 
 // ── FAQ ──
 document.querySelectorAll('.fitem').forEach(function(item){
